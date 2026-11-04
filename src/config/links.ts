@@ -68,8 +68,8 @@ export const LINKS: LinkItem[] = [
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    description: 'Follow AURVIX',
-    url: TODO_URL, // TODO: add the LinkedIn company page URL
+    description: 'Connect with our CEO',
+    url: 'https://www.linkedin.com/in/ghariebml/',
     icon: 'linkedin',
   },
 ];
