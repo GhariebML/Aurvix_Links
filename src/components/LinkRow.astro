@@ -1,0 +1,38 @@
+---
+import Icon from './Icon.astro';
+import type { LinkItem } from '../config/links';
+
+interface Props {
+  link: LinkItem;
+}
+
+const { link } = Astro.props;
+---
+
+{
+  link.url ? (
+    <a class="row" href={link.url} target="_blank" rel="noopener noreferrer">
+      <span class="row__icon">
+        <Icon name={link.icon} />
+      </span>
+      <span class="row__text">
+        <span class="row__label">{link.label}</span>
+        <span class="row__description">{link.description}</span>
+      </span>
+      <span class="row__arrow">
+        <Icon name="arrow" />
+      </span>
+      <span class="sr-only">(opens in a new tab)</span>
+    </a>
+  ) : (
+    <div class="row row--pending">
+      <span class="row__icon">
+        <Icon name={link.icon} />
+      </span>
+      <span class="row__text">
+        <span class="row__label">{link.label}</span>
+        <span class="row__description">Coming soon</span>
+      </span>
+    </div>
+  )
+}

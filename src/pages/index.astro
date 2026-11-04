@@ -1,0 +1,87 @@
+---
+import '@fontsource-variable/sora/wght.css';
+import '../styles/global.css';
+import fontUrl from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
+import LinkRow from '../components/LinkRow.astro';
+import { BRAND, LINKS } from '../config/links';
+import emblem from '../assets/brand/aurvix-emblem.webp';
+import wordmark from '../assets/brand/aurvix-wordmark.webp';
+
+const pending = LINKS.filter((link) => !link.url).map((link) => link.label);
+if (pending.length > 0) {
+  console.warn(`[AURVIX Links] Showing as "Coming soon", no URL set: ${pending.join(', ')}`);
+}
+
+const title = `${BRAND.name} | ${BRAND.statement}`;
+const canonical = new URL('/', Astro.site).href;
+const ogImage = new URL('/og-image.png', Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={BRAND.intro} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={BRAND.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={BRAND.intro} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${BRAND.name} logo`} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true">
+      <div class="glow"></div>
+      <svg class="beam" viewBox="0 0 1000 460" width="1000" height="460" fill="none" focusable="false">
+        <defs>
+          <linearGradient id="beam-fade" gradientUnits="userSpaceOnUse" x1="0" y1="48" x2="0" y2="440">
+            <stop offset="0" stop-color="#2f8fff" stop-opacity=".45"></stop>
+            <stop offset="1" stop-color="#2f8fff" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <path d="M500 48 106 440M500 48l394 392" stroke="url(#beam-fade)"></path>
+      </svg>
+    </div>
+
+    <div class="page">
+      <main>
+        <header class="hero">
+          <img class="hero__emblem rise" src={emblem.src} width={emblem.width} height={emblem.height} alt="" />
+          <h1 class="hero__wordmark rise">
+            <img src={wordmark.src} width={wordmark.width} height={wordmark.height} alt={BRAND.name} />
+          </h1>
+          <p class="hero__descriptor rise">{BRAND.descriptor}</p>
+          <p class="hero__statement rise">{BRAND.statement}</p>
+          <p class="hero__intro rise">{BRAND.intro}</p>
+        </header>
+
+        <nav aria-label={`${BRAND.name} links`}>
+          <ul class="links">
+            {
+              LINKS.map((link, index) => (
+                <li class="rise" style={`--i:${index + 3}`}>
+                  <LinkRow link={link} />
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </main>
+
+      <footer class="footer">{BRAND.footer}</footer>
+    </div>
+  </body>
+</html>
