@@ -13,7 +13,7 @@
 /** Marks a URL that AURVIX has not provided yet. */
 export const TODO_URL = null;
 
-export type IconName = 'globe' | 'layers' | 'grid' | 'whatsapp' | 'linkedin';
+export type IconName = 'globe' | 'layers' | 'grid' | 'whatsapp' | 'linkedin' | 'briefcase';
 
 export interface LinkItem {
   /** Unique identifier. */
@@ -65,11 +65,26 @@ export const LINKS: LinkItem[] = [
     url: 'https://wa.me/201022487565',
     icon: 'whatsapp',
   },
-  {
-    id: 'linkedin',
-    label: 'LinkedIn',
-    description: 'Connect with our CEO',
-    url: 'https://www.linkedin.com/in/ghariebml/',
-    icon: 'linkedin',
-  },
 ];
+
+/** The Leadership card below the links. */
+export const LEADERSHIP = {
+  heading: 'Leadership',
+  name: 'Mohamed Gharieb',
+  initials: 'MG',
+  role: 'Chief Executive Officer',
+  links: [
+    {
+      id: 'ceo-portfolio',
+      label: 'Portfolio',
+      url: 'https://mohamed-gharieb-portfolio.vercel.app/',
+      icon: 'briefcase',
+    },
+    {
+      id: 'ceo-linkedin',
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/ghariebml/',
+      icon: 'linkedin',
+    },
+  ] satisfies { id: string; label: string; url: string; icon: IconName }[],
+};
