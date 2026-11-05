@@ -50,19 +50,14 @@ Build settings are already in `vercel.json`, and the Node version is set in `pac
 
 Every push to `main` then deploys to production, and pull requests get preview URLs.
 
-## Connect links.aurvix.com
+## Domain
 
-This requires control of the DNS for `aurvix.com`.
+The live page is at <https://aurvix-links.vercel.app/>.
 
-1. In **Project > Settings > Domains**, add `links.aurvix.com`.
-2. At your DNS provider, add the record Vercel shows. It is normally a `CNAME` for `links` pointing to the target Vercel gives you.
-3. Wait until Vercel shows the domain as valid, then scan a test QR code before printing cards.
-
-`astro.config.mjs` sets `site` to `https://links.aurvix.com`, which is used for the canonical URL and social preview image. Update it if the domain changes.
+`astro.config.mjs` sets `site` to this address, which is used for the canonical URL and social preview image. If the domain ever changes, update `site`, add the new domain in **Project > Settings > Domains**, and regenerate any QR codes.
 
 ## Before printing cards
 
 - [ ] All `TODO_URL` values in `src/config/links.ts` are replaced
-- [ ] `links.aurvix.com` loads over HTTPS
-- [ ] The QR code has been scanned on both iPhone and Android
+- [ ] The QR code points to `https://aurvix-links.vercel.app/` and has been scanned on both iPhone and Android
 - [ ] The WhatsApp button opens a chat with the correct number
