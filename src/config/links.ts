@@ -11,6 +11,7 @@
  */
 
 import ceoPortrait from '../assets/brand/ceo-portrait.webp';
+import ctoPortrait from '../assets/brand/cto-portrait.webp';
 
 /** Marks a URL that AURVIX has not provided yet. */
 export const TODO_URL = null;
@@ -114,6 +115,7 @@ export const LEADERSHIP: { heading: string; people: Leader[] } = {
       name: 'Ahmed Eid',
       role: 'Chief Technology Officer',
       initials: 'AE',
+      photo: ctoPortrait,
       links: [
         {
           id: 'cto-linkedin',
