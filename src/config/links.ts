@@ -12,6 +12,7 @@
 
 import ceoPortrait from '../assets/brand/ceo-portrait.webp';
 import ctoPortrait from '../assets/brand/cto-portrait.webp';
+import cfoPortrait from '../assets/brand/cfo-portrait.webp';
 
 /** Marks a URL that AURVIX has not provided yet. */
 export const TODO_URL = null;
@@ -121,6 +122,20 @@ export const LEADERSHIP: { heading: string; people: Leader[] } = {
           id: 'cto-linkedin',
           label: 'LinkedIn',
           url: 'https://www.linkedin.com/in/ahmed-1eid/',
+          icon: 'linkedin',
+        },
+      ],
+    },
+    {
+      name: 'Eslam Gharieb',
+      role: 'Chief Financial Officer',
+      initials: 'EG',
+      photo: cfoPortrait,
+      links: [
+        {
+          id: 'cfo-linkedin',
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/eslam-gharieb-9a3725325/',
           icon: 'linkedin',
         },
       ],
