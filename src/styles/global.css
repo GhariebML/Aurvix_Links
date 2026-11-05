@@ -269,6 +269,11 @@ a.row:focus-visible {
   color: var(--accent-soft);
 }
 
+.leader__cards {
+  display: grid;
+  gap: 10px;
+}
+
 .leader__card {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -298,9 +303,20 @@ a.row:focus-visible {
   outline-offset: 2px;
 }
 
+.leader__photo--initials {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #1668ff, #2f8fff);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
 .leader__links {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   border-top: 1px solid var(--line);
 }
 

@@ -7,7 +7,6 @@ import LinkRow from '../components/LinkRow.astro';
 import { BRAND, LEADERSHIP, LINKS } from '../config/links';
 import emblem from '../assets/brand/aurvix-emblem.webp';
 import wordmark from '../assets/brand/aurvix-wordmark.webp';
-import ceoPortrait from '../assets/brand/ceo-portrait.webp';
 
 const pending = LINKS.filter((link) => !link.url).map((link) => link.label);
 if (pending.length > 0) {
@@ -84,29 +83,38 @@ const ogImage = new URL('/og-image.png', Astro.site).href;
 
         <section class="leader rise" style={`--i:${LINKS.length + 3}`} aria-labelledby="leadership-heading">
           <h2 id="leadership-heading" class="leader__heading">{LEADERSHIP.heading}</h2>
-          <div class="leader__card">
-            <div class="leader__person">
-              <img class="leader__photo" src={ceoPortrait.src} width={ceoPortrait.width} height={ceoPortrait.height} alt="" />
-
-              <div class="row__text">
-                <p class="row__label">{LEADERSHIP.name}</p>
-                <p class="row__description">{LEADERSHIP.role}</p>
-              </div>
-            </div>
-            <ul class="leader__links">
-              {
-                LEADERSHIP.links.map((link) => (
-                  <li>
-                    <a class="leader__link" href={link.url} target="_blank" rel="noopener noreferrer">
-                      <Icon name={link.icon} />
-                      <span class="sr-only">{LEADERSHIP.name}:</span>
-                      <span>{link.label}</span>
-                      <span class="sr-only">(opens in a new tab)</span>
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+          <div class="leader__cards">
+            {
+              LEADERSHIP.people.map((person) => (
+                <div class="leader__card">
+                  <div class="leader__person">
+                    {person.photo ? (
+                      <img class="leader__photo" src={person.photo.src} width={person.photo.width} height={person.photo.height} alt="" />
+                    ) : (
+                      <span class="leader__photo leader__photo--initials" aria-hidden="true">
+                        {person.initials}
+                      </span>
+                    )}
+                    <div class="row__text">
+                      <p class="row__label">{person.name}</p>
+                      <p class="row__description">{person.role}</p>
+                    </div>
+                  </div>
+                  <ul class="leader__links">
+                    {person.links.map((link) => (
+                      <li>
+                        <a class="leader__link" href={link.url} target="_blank" rel="noopener noreferrer">
+                          <Icon name={link.icon} />
+                          <span class="sr-only">{person.name}:</span>
+                          <span>{link.label}</span>
+                          <span class="sr-only">(opens in a new tab)</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
         </section>
       </main>

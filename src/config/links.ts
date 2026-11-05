@@ -10,6 +10,8 @@
  * a dead page, and the build prints a warning naming it.
  */
 
+import ceoPortrait from '../assets/brand/ceo-portrait.webp';
+
 /** Marks a URL that AURVIX has not provided yet. */
 export const TODO_URL = null;
 
@@ -55,7 +57,7 @@ export const LINKS: LinkItem[] = [
     id: 'services',
     label: 'Our Services',
     description: 'AI, automation, transformation',
-    url: TODO_URL, // TODO: add the services page URL
+    url: 'https://www.aurvix.online/solutions',
     icon: 'grid',
   },
   {
@@ -67,23 +69,59 @@ export const LINKS: LinkItem[] = [
   },
 ];
 
-/** The Leadership card below the links. */
-export const LEADERSHIP = {
+export interface LeaderLink {
+  id: string;
+  label: string;
+  url: string;
+  icon: IconName;
+}
+
+export interface Leader {
+  name: string;
+  role: string;
+  /** Shown when there is no photo. */
+  initials: string;
+  /** Optional square image, imported at the top of this file. */
+  photo?: ImageMetadata;
+  links: LeaderLink[];
+}
+
+/** One card per person, shown below the links in this order. */
+export const LEADERSHIP: { heading: string; people: Leader[] } = {
   heading: 'Leadership',
-  name: 'Mohamed Gharieb',
-  role: 'Chief Executive Officer',
-  links: [
+  people: [
     {
-      id: 'ceo-portfolio',
-      label: 'Portfolio',
-      url: 'https://mohamed-gharieb-portfolio.vercel.app/',
-      icon: 'briefcase',
+      name: 'Mohamed Gharieb',
+      role: 'Chief Executive Officer',
+      initials: 'MG',
+      photo: ceoPortrait,
+      links: [
+        {
+          id: 'ceo-portfolio',
+          label: 'Portfolio',
+          url: 'https://mohamed-gharieb-portfolio.vercel.app/',
+          icon: 'briefcase',
+        },
+        {
+          id: 'ceo-linkedin',
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/ghariebml/',
+          icon: 'linkedin',
+        },
+      ],
     },
     {
-      id: 'ceo-linkedin',
-      label: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/ghariebml/',
-      icon: 'linkedin',
+      name: 'Ahmed Eid',
+      role: 'Chief Technology Officer',
+      initials: 'AE',
+      links: [
+        {
+          id: 'cto-linkedin',
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/ahmed-1eid/',
+          icon: 'linkedin',
+        },
+      ],
     },
-  ] satisfies { id: string; label: string; url: string; icon: IconName }[],
+  ],
 };
