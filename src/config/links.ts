@@ -41,14 +41,14 @@ export const LINKS: LinkItem[] = [
     id: 'website',
     label: 'Official Website',
     description: 'Who we are and what we build',
-    url: TODO_URL, // TODO: add the official website URL
+    url: 'https://www.aurvix.online/',
     icon: 'globe',
   },
   {
     id: 'nexaserve',
     label: 'NexaServe Platform',
     description: 'AI customer support platform',
-    url: TODO_URL, // TODO: add the NexaServe URL
+    url: 'https://aurvix-one.vercel.app/nexaserve',
     icon: 'layers',
   },
   {
@@ -71,7 +71,6 @@ export const LINKS: LinkItem[] = [
 export const LEADERSHIP = {
   heading: 'Leadership',
   name: 'Mohamed Gharieb',
-  initials: 'MG',
   role: 'Chief Executive Officer',
   links: [
     {

@@ -7,6 +7,7 @@ import LinkRow from '../components/LinkRow.astro';
 import { BRAND, LEADERSHIP, LINKS } from '../config/links';
 import emblem from '../assets/brand/aurvix-emblem.webp';
 import wordmark from '../assets/brand/aurvix-wordmark.webp';
+import ceoPortrait from '../assets/brand/ceo-portrait.webp';
 
 const pending = LINKS.filter((link) => !link.url).map((link) => link.label);
 if (pending.length > 0) {
@@ -85,7 +86,8 @@ const ogImage = new URL('/og-image.png', Astro.site).href;
           <h2 id="leadership-heading" class="leader__heading">{LEADERSHIP.heading}</h2>
           <div class="leader__card">
             <div class="leader__person">
-              <span class="leader__initials" aria-hidden="true">{LEADERSHIP.initials}</span>
+              <img class="leader__photo" src={ceoPortrait.src} width={ceoPortrait.width} height={ceoPortrait.height} alt="" />
+
               <div class="row__text">
                 <p class="row__label">{LEADERSHIP.name}</p>
                 <p class="row__description">{LEADERSHIP.role}</p>
