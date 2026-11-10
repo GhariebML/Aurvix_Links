@@ -52,7 +52,7 @@ export const LINKS: LinkItem[] = [
     id: 'nexaserve',
     label: 'NexaServe Platform',
     description: 'AI customer support platform',
-    url: 'https://aurvix-one.vercel.app/nexaserve',
+    url: 'https://nexa-bilingual-stage.lovable.app/',
     icon: 'layers',
   },
   {
